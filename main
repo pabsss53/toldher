@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOLD HER | New Collection</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Rubik',sans-serif;background:#fff;color:#333;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+/* LOGO HEADER */
+header{padding:2rem 5%;display:flex;justify-content:center;position:relative;z-index:10;}
+.logo{
+    font-family: 'Fredoka One', cursive;
+    font-size:4rem;
+    display:flex;
+    gap:0.3rem;
+    font-weight:700;
+    cursor:pointer;
+}
+.logo span{
+    transition: transform 0.4s ease, color 0.3s ease;
+    opacity:0;
+    transform: translateY(-20px);
+    animation: logoFadeIn 1s forwards;
+}
+.logo span:hover{
+    transform: rotate(-15deg) scale(1.3) translateY(-5px);
+}
+/* Warna tiap huruf */
+.logo span:nth-child(1){color:#FF4C4C; animation-delay:0.1s;}
+.logo span:nth-child(2){color:#FF9F1C; animation-delay:0.2s;}
+.logo span:nth-child(3){color:#FFC300; animation-delay:0.3s;}
+.logo span:nth-child(4){color:#2EC4B6; animation-delay:0.4s;}
+.logo span:nth-child(5){color:#00B4D8; animation-delay:0.5s;}
+.logo span:nth-child(6){color:#9B5DE5; animation-delay:0.6s;}
+.logo span:nth-child(7){color:#F15BB5; animation-delay:0.7s;}
+@keyframes logoFadeIn{to{opacity:1;transform:translateY(0);}}
+
+/* Floating shapes */
+.floating-shape{position:absolute;width:50px;height:50px;border-radius:50%;opacity:0.2;animation:floating 6s infinite ease-in-out;}
+.floating-shape:nth-child(1){background:#FF4C4C;top:10%;left:5%;animation-delay:0s;}
+.floating-shape:nth-child(2){background:#FFC300;top:20%;left:85%;animation-delay:2s;}
+.floating-shape:nth-child(3){background:#2EC4B6;top:60%;left:10%;animation-delay:4s;}
+.floating-shape:nth-child(4){background:#F15BB5;top:70%;left:70%;animation-delay:1s;}
+@keyframes floating{0%,100%{transform:translateY(0);}50%{transform:translateY(-30px);}}
+
+/* HERO */
+.hero{text-align:center;padding:8rem 2rem;position:relative;overflow:hidden;}
+.hero h2{font-size:3rem;font-weight:700;margin-bottom:1rem;color:#333;opacity:0;transform:translateY(20px);animation:fadeInUp 1s forwards 0.3s;}
+.hero p{font-size:1.2rem;color:#555;margin-bottom:2rem;opacity:0;transform:translateY(20px);animation:fadeInUp 1s forwards 0.6s;}
+@keyframes fadeInUp{to{opacity:1;transform:translateY(0);}}
+
+/* BUTTONS */
+.btn{display:inline-block;padding:1rem 2.5rem;background:#FF4C4C;color:#fff;font-weight:500;border-radius:8px;transition:all 0.3s ease;}
+.btn:hover{background:#d32f2f;transform:scale(1.05);box-shadow:0 10px 20px rgba(0,0,0,0.1);}
+
+/* ARTICLES & GALLERY */
+.articles{display:flex;justify-content:center;gap:2rem;padding:4rem 5%;flex-wrap:wrap;}
+.article-card{width:320px;border-radius:15px;overflow:hidden;border:1px solid #eee;transition:all 0.3s ease;cursor:pointer;background:#fff;position:relative;}
+.article-card:hover{transform:translateY(-15px) rotate(-1deg);box-shadow:0 20px 30px rgba(0,0,0,0.12);}
+.article-card img{width:100%;height:320px;object-fit:cover;}
+.article-card h3{padding:1rem;font-size:1.2rem;font-weight:500;color:#333;}
+.article-card p{padding:0 1rem 1rem 1rem;color:#666;font-size:0.95rem;}
+.article-card::after{content:"";position:absolute;bottom:10px;right:10px;font-size:0.8rem;color:#FF4C4C;font-weight:600;opacity:0;transition:opacity 0.3s ease;}
+.article-card:hover::after{opacity:1;}
+
+/* CTA */
+.cta{background:#F0F0F0;text-align:center;padding:6rem 2rem;position:relative;overflow:hidden;}
+.cta h2{font-size:2.5rem;margin-bottom:1rem;color:#333;}
+.cta p{font-size:1.1rem;color:#555;margin-bottom:2rem;}
+.cta input[type="email"]{padding:1rem 1.5rem;border-radius:6px;border:1px solid #ccc;width:300px;max-width:90%;margin-right:1rem;transition:all 0.3s ease;}
+.cta input[type="email"]:focus{border-color:#FF4C4C;outline:none;box-shadow:0 0 8px rgba(255,76,76,0.3);}
+.cta button{padding:1rem 2rem;background:#FF4C4C;color:#fff;font-weight:500;border-radius:6px;border:none;cursor:pointer;transition:all 0.3s ease;}
+.cta button:hover{background:#d32f2f;transform:scale(1.05);}
+
+/* FOOTER */
+footer{text-align:center;padding:3rem 5%;color:#999;border-top:1px solid #eee;font-size:0.9rem;position:relative;}
+.social-icons{display:flex;justify-content:center;gap:1rem;margin-top:1rem;}
+.social-icons a{color:#333;font-size:1.2rem;transition:all 0.3s ease;}
+.social-icons a:hover{color:#FF4C4C;transform:scale(1.2);}
+
+/* SCROLL ANIMATION */
+.fade-up{opacity:0;transform:translateY(20px);transition:all 0.6s ease-out;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* MODAL */
+.modal-overlay{
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    background:rgba(0,0,0,0.5);display:none;justify-content:center;align-items:center;z-index:100;
+}
+.modal{
+    background:#fff;padding:2rem;border-radius:15px;max-width:500px;width:90%;position:relative;animation:modalFade 0.3s ease forwards;
+}
+.modal img{width:100%;border-radius:10px;margin-bottom:1rem;}
+.modal h3{margin-bottom:1rem;color:#333;}
+.modal p{color:#555;font-size:1rem;}
+.close-modal{
+    position:absolute;top:10px;right:15px;font-size:1.5rem;font-weight:bold;color:#333;cursor:pointer;
+    transition:all 0.3s ease;
+}
+.close-modal:hover{color:#FF4C4C;transform:scale(1.2);}
+@keyframes modalFade{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+
+<!-- Floating shapes -->
+<div class="floating-shape"></div>
+<div class="floating-shape"></div>
+<div class="floating-shape"></div>
+<div class="floating-shape"></div>
+
+<!-- HEADER LOGO -->
+<header>
+    <div class="logo">
+        <span>T</span><span>O</span><span>L</span><span>D</span> <span>H</span><span>E</span><span>R</span>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <h2>Discover Our New T-Shirt Design</h2>
+    <p>Fresh, playful, and minimalistic design just dropped!</p>
+    <a href="#articles" class="btn">Check It Out</a>
+</section>
+
+<!-- ARTICLES -->
+<section class="articles" id="articles">
+    <div class="article-card fade-up" 
+         data-title="New Vibrant Tee" 
+         data-desc="I bet you scroll past my face, lingering just long enough to giggle at old texts we thought were genius. You sip your coffee while Bon Iver hums softly from the corner of your room, the song catching like it knows the shape of your smile. The moon winks through your window, lazy and conspiratorial, as if it’s read Haruki Murakami and understands the quiet poetry of missing someone.
+
+I imagine you on the balcony, notebook open, doodles spilling across the margins like confetti. Somewhere, Joan Didion’s words curl in your head, reminding you of the tiny, ridiculous jokes we whispered over late-night ramen. If only you miss me, I’d pop up like a Polaroid stuck on your fridge, crooked and sun-faded, impossible to ignore, carrying a spark of the little chaos we called “us.”
+
+And when the rain taps softly on the streets, you pause at a busker playing an old Elliott Smith song, smiling at a cloud, a streetlight, a half-empty café mug. I’d be in all of it—the warmth of your hoodie, the hum of vinyl in the corner, the quiet little spaces that feel like home. If only you miss me, you’d find me in the ordinary, tucked in the edges of your day, a tiny impossible reminder that some things never really leave." 
+         data-img="public/BACK.png">
+
+        <!-- Display image and text inside the card -->
+        <img src="public/BACK.png" alt="New T-Shirt">
+        <h3>#1 "if only u miss me"</h3>
+        <p>I bet you scroll past my face and giggle at old texts. The moon winks like it knows our secrets. If only you miss me, I’d pop up in your day like confetti.</p>
+
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta fade-up">
+    <h2>Subscribe for Updates</h2>
+    <p>Get notified when new T-shirt designs drop!</p>
+    <input type="email" placeholder="Your email">
+    <button>Subscribe</button>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    &copy; 2025 TOLD HER. All Rights Reserved.
+    <div class="social-icons">
+        <a href="#">&#x1F426;</a>
+        <a href="#">&#x1F4F1;</a>
+        <a href="#">&#x1F426;</a>
+    </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <img src="public/BACK.png" alt="Article Image" id="modalImg">
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc"></p>
+    </div>
+</div>
+
+<script>
+// Scroll animation
+const faders = document.querySelectorAll('.fade-up');
+window.addEventListener('scroll', () => {
+    faders.forEach(fade => {
+        const top = fade.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if(top < windowHeight - 100){
+            fade.classList.add('visible');
+        }
+    });
+});
+
+// Modal logic
+const articleCards = document.querySelectorAll('.article-card');
+const modalOverlay = document.getElementById('modalOverlay');
+const modalImg = document.getElementById('modalImg');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+const closeModal = document.getElementById('closeModal');
+
+articleCards.forEach(card => {
+    card.addEventListener('click', () => {
+        const img = card.getAttribute('data-img');
+        const title = card.getAttribute('data-title');
+        const desc = card.getAttribute('data-desc');
+        modalImg.src = img;
+        modalTitle.textContent = title;
+        modalDesc.textContent = desc;
+        modalOverlay.style.display = 'flex';
+    });
+
+    // Hover effect
+    card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-10px) scale(1.02)';
+        card.style.boxShadow = '0 15px 25px rgba(0,0,0,0.15)';
+    });
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0) scale(1)';
+        card.style.boxShadow = '0 0 0 rgba(0,0,0,0)';
+    });
+});
+
+// Close modal
+closeModal.addEventListener('click', () => {
+    modalOverlay.style.display = 'none';
+});
+modalOverlay.addEventListener('click', (e) => {
+    if(e.target === modalOverlay) modalOverlay.style.display = 'none';
+});
+</script>
+
+</body>
+</html>
